@@ -21,4 +21,15 @@ export class PaisService {
     const url = `${this._apiUrl}/capital/${termino}`
     return this.http.get<RESTCountriesResponse[]>(url);
   }
+
+  buscarXRegion(termino:string): Observable<RESTCountriesResponse []>{
+    const url = `${this._apiUrl}/region/${termino}`
+    return this.http.get<RESTCountriesResponse[]>(url);
+  }
+
+  getPaisXCodigo(id:string): Observable<RESTCountriesResponse >{
+    const url = `${this._apiUrl}/alpha/${id}`;
+    return this.http.get<RESTCountriesResponse>(url);
+    
+  }
 }

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { PaisService } from '../../services/pais.service';
+import { switchMap } from "rxjs/operators";
 
 @Component({
   selector: 'app-ver-pais',
@@ -8,9 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VerPaisComponent implements OnInit {
 
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute, private paisService: PaisService) { }
 
   ngOnInit(): void {
+
+    this.activatedRoute.params
+      //SwitchMap permite tomar un observer y regresar otro
+      .pipe(switchMap((params) => this.paisService.getPaisXCodigo(params.id)))
+      .subscribe(resp => {
+        console.log(resp);
+      });
+    //Sin SwitchMap este seria el codigo
+    // this.activatedRoute.params.subscribe(params => {
+    //   this.paisService.getPaisXCodigo(params.id).subscribe(pais => {
+    //     console.log(pais);
+    //   });
+
+    // })
   }
 
 }
