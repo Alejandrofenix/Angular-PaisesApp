@@ -2,7 +2,7 @@
 <hr>
 <div class="row">
  <div class="col">
-  <app-pais-input (onEnter)="buscar($event)">
+  <app-pais-input (onEnter)="buscar($event)" (onDebounce)="sugerencias($event)">
     
   </app-pais-input>
   
@@ -14,7 +14,7 @@
  No hay resultados para el pais: {{termino}}
 </div>
 
-<div  *ngIf="paises.length>0" class="row">
+<div  *ngIf="paises.length>0 && !hayError " class="row">
  <div class="col">
    <app-pais-table [paises]="paises"></app-pais-table>
  </div>

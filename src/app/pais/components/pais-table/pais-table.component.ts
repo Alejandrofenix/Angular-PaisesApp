@@ -10,6 +10,7 @@ import { RESTCountriesResponse } from '../../interfaces/pais.interface';
 export class PaisTableComponent {
 
   @Input() paises: RESTCountriesResponse[]=[];  
+  
   constructor() { }
 
 

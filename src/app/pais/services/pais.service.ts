@@ -16,4 +16,9 @@ export class PaisService {
     const url = `${this._apiUrl}/name/${termino}`
     return this.http.get<RESTCountriesResponse[]>(url);
   }
+
+  buscarXCapital(termino:string): Observable<RESTCountriesResponse []>{
+    const url = `${this._apiUrl}/capital/${termino}`
+    return this.http.get<RESTCountriesResponse[]>(url);
+  }
 }

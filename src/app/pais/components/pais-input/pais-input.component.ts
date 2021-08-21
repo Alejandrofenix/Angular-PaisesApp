@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 
 @Component({
@@ -7,20 +9,37 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styles: [
   ]
 })
-export class PaisInputComponent  {
+export class PaisInputComponent implements OnInit {
+
+  @Output() onEnter: EventEmitter<string> = new EventEmitter();
+  @Output() onDebounce: EventEmitter<string> = new EventEmitter();
+
   termino: string = '';
 
-  @Output() onEnter:EventEmitter<string> = new EventEmitter();
+  debouncer: Subject<string> = new Subject();
 
 
+  ngOnInit(): void {
 
-  constructor() { }
+    this.debouncer
+    .pipe(debounceTime(300)) //No realizar el subscribe hasta que el observador deje de emitir valores por 300 milesimas de segundos
+    .subscribe(valor => {
+      this.onDebounce.emit(valor);
+    });
 
-  buscar(){
-   
+  }
+
+
+  buscar() {
+
     this.onEnter.emit(this.termino);
 
   }
- 
+
+  teclaPresionada() {
+    this.debouncer.next(this.termino);
+    
+  }
+
 
 }
