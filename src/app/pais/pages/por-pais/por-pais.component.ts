@@ -6,6 +6,8 @@ import { PaisService } from '../../services/pais.service';
   selector: 'app-por-pais',
   templateUrl: './por-pais.component.html',
   styles: [
+    
+   
   ]
 })
 export class PorPaisComponent {
