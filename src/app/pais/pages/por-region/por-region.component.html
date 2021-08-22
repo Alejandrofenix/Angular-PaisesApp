@@ -1,22 +1,25 @@
-<h3>Buscar por región <small>{{regionActiva |titlecase}}</small></h3>
+<div class="animate__animated animate__fadeIn">
 
-<h5>Seleccione la región</h5>
+  <h3>Buscar por región <small>{{regionActiva |titlecase}}</small></h3>
 
-<div class="row">
- <div class="col">
-  <!-- Formas de hacer que el elemento seleccionado se quede en cierto color   -->
-  <!-- 1.- [class.btn-primary]="region==regionActiva" -->
-  <!-- 2.- [ngClass]="{
-   'btn-primary':regionActiva===region,
-   'btn-outline-primary':regionActiva!==region}" -->
+  <h5>Seleccione la región</h5>
 
-  <button *ngFor="let region of regiones" [class]="getClaseCSS(region)" (click)="activarRegion(region)"> {{region
-   |titlecase}}</button>
- </div>
-</div>
+  <div class="row">
+    <div class="col">
+      <!-- Formas de hacer que el elemento seleccionado se quede en cierto color   -->
+      <!-- 1.- [class.btn-primary]="region==regionActiva" -->
+      <!-- 2.- [ngClass]="{
+     'btn-primary':regionActiva===region,
+     'btn-outline-primary':regionActiva!==region}" -->
 
-<div class="row" *ngIf="paises.length>0">
- <div class="col">
-  <app-pais-table [paises]='paises'></app-pais-table>
- </div>
+      <button *ngFor="let region of regiones" [class]="getClaseCSS(region)" (click)="activarRegion(region)"> {{region
+        |titlecase}}</button>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="paises.length>0">
+    <div class="col">
+      <app-pais-table [paises]='paises'></app-pais-table>
+    </div>
+  </div>
 </div>

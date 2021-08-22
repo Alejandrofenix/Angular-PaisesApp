@@ -1,21 +1,23 @@
-<h3>Por País</h3>
-<hr>
-<div class="row">
- <div class="col">
-  <app-pais-input (onEnter)="buscar($event)" (onDebounce)="sugerencias($event)">
-    
-  </app-pais-input>
-  
- </div>
-</div>
+<div class="animate__animated animate__fadeIn">
+  <h3>Por País</h3>
+  <hr>
+  <div class="row">
+    <div class="col">
+      <app-pais-input (onEnter)="buscar($event)" (onDebounce)="sugerencias($event)">
 
-<hr>
-<div *ngIf="hayError" class="alert alert-danger">
- No hay resultados para el pais: {{termino}}
-</div>
+      </app-pais-input>
 
-<div  *ngIf="paises.length>0 && !hayError " class="row">
- <div class="col">
-   <app-pais-table [paises]="paises"></app-pais-table>
- </div>
+    </div>
+  </div>
+
+  <hr>
+  <div *ngIf="hayError" class="alert alert-danger">
+    No hay resultados para el pais: {{termino}}
+  </div>
+
+  <div *ngIf="paises.length>0 && !hayError " class="row">
+    <div class="col">
+      <app-pais-table [paises]="paises"></app-pais-table>
+    </div>
+  </div>
 </div>
